@@ -16,8 +16,9 @@ namespace ClubMembershipApplication.Data
             base.OnConfiguring(optionsBuilder);
         }
 
-        // Run Add-Migration FirstCreate on the Package Manager Console
+        // Run 'Add-Migration FirstCreate' on the Package Manager Console once
         // Hint: the 'Microsoft.EntityFrameworkCore.Sqlite' & 'Microsoft.EntityFrameworkCore.Tools' are needed
+        // update this with 'update-database'
         public DbSet<User> User { get; set; }
     }
 }
