@@ -12,7 +12,13 @@ namespace ClubMembershipApplication.Data
     {
         public bool EmailExists(string emailAddress)
         {
-            throw new NotImplementedException();
+            bool emailExists = false;
+
+            using (var dbContext = new ClubMembershipDbContext())
+            {
+                emailExists = dbContext.User.Any(u => u.EMailAdress.ToLower().Trim() == emailAddress.Trim().ToLower());
+            }
+            return emailExists;
         }
 
         public bool Register(string[] fields)
