@@ -1,4 +1,5 @@
-﻿using FieldValidatorAPI;
+﻿using ClubMembershipApplication.Data;
+using FieldValidatorAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace ClubMembershipApplication.FieldValidators
         const int LastName_Max_Length = 100;
 
         delegate bool EmailExistsDel (string emailAddress);
-        EmailExistsDel? _emailExistsDel = null;
+        EmailExistsDel _emailExistsDel = null;
 
         RequiredValidDel _requiredValidDel = null;
         StringLengthValidDel _stringLengthValidDel = null;
@@ -24,6 +25,8 @@ namespace ClubMembershipApplication.FieldValidators
         CompareFieldsValidDel _compareFieldsValidDel = null;
 
         string[]? _fieldArray = null;
+        IRegister _register = null;
+
         public string[] FieldArray
         {
             get
@@ -38,9 +41,15 @@ namespace ClubMembershipApplication.FieldValidators
         FieldValidatorDel _fieldValidatorDel = null;
         public FieldValidatorDel ValidatorDel => _fieldValidatorDel;
 
+        public UserRegistrationValidator (IRegister register)
+        {
+            _register = register;
+        }
+
         public void InitialiseValidatorDelegates()
         {
             _fieldValidatorDel = new FieldValidatorDel(ValidateField);
+            _emailExistsDel = new EmailExistsDel(_register.EmailExists);
 
             _requiredValidDel = CommonFieldValidatorFunctions.RequiredFieldValidDel;
             _stringLengthValidDel = CommonFieldValidatorFunctions.StringLengthValidDel;
@@ -60,6 +69,7 @@ namespace ClubMembershipApplication.FieldValidators
                 case FieldConstants.UserRegistrationField.EMailAddress:
                     fieldInvalidMessage = (!_requiredValidDel(fieldValue)) ? $"You must enter a value for field:{Enum.GetName(typeof(FieldConstants.UserRegistrationField), userRegistrationField)}{Environment.NewLine}" : "";
                     fieldInvalidMessage = (fieldInvalidMessage == "" && !_patternMatchDel(fieldValue, CommonRegularExpressionValidationPatterns.Email_Address_RegEx_Pattern)) ? $"You must enter a valid email address{Environment.NewLine}" : fieldInvalidMessage;
+                    fieldInvalidMessage = (fieldInvalidMessage == "" && !_emailExistsDel(fieldValue)) ? $"This email address already exists. Please try again{Environment.NewLine}" : fieldInvalidMessage;
                     break;
 
                 case FieldConstants.UserRegistrationField.FirstName:
