@@ -18,7 +18,7 @@ namespace ClubMembershipApplication.FieldValidators
             DateOfBirth,
             PhoneNumber,
             AddressFirstLine,
-            AddressSecondine,
+            AddressSecondLine,
             AddressCity,
             PostCode
         }
