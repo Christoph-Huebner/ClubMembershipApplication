@@ -58,7 +58,7 @@ namespace ClubMembershipApplication.Views
                 Console.WriteLine(promptText);
                 fieldVal = Console.ReadLine();
 
-            } while (!FieldValid(field, promptText));
+            } while (!FieldValid(field, fieldVal));
 
             return fieldVal;
         }
