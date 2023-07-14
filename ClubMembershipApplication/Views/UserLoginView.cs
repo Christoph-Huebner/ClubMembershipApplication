@@ -32,7 +32,8 @@ namespace ClubMembershipApplication.Views
             User user = _login.Login(emailAddress, password);
             if (user != null)
             {
-                // ToDo: Run Welcome View
+                WelcomeUserView welcomeUserView = new WelcomeUserView(user);
+                welcomeUserView.RunView();
             }
             else
             {
