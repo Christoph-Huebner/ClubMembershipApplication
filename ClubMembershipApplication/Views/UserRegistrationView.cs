@@ -25,16 +25,16 @@ namespace ClubMembershipApplication.Views
             CommonOutputText.WriteMainHeading();
             CommonOutputText.WriteRegistrationHeading();
 
-            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.EMailAddress] = GetInputFromUser(FieldConstants.UserRegistrationField.EMailAddress, "Please enter you email address");
-            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.FirstName] = GetInputFromUser(FieldConstants.UserRegistrationField.FirstName, "Please enter you first name");
-            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.LastName] = GetInputFromUser(FieldConstants.UserRegistrationField.LastName, "Please enter you last name");
-            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.Passwort] = GetInputFromUser(FieldConstants.UserRegistrationField.Passwort, $"Please enter you password.{Environment.NewLine}You password must contain at leas 1 small-case letter,{Environment.NewLine}1 Captital letter, 1 digit, 1 special character{Environment.NewLine} and the length should be between 6-10 characters:");
-            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.PasswortCompare] = GetInputFromUser(FieldConstants.UserRegistrationField.PasswortCompare, "Please re-enter you password");
-            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.DateOfBirth] = GetInputFromUser(FieldConstants.UserRegistrationField.DateOfBirth, "Please enter you day of birth");
-            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.AddressFirstLine] = GetInputFromUser(FieldConstants.UserRegistrationField.AddressFirstLine, "Please enter your first line of your address");
-            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.AddressSecondLine] = GetInputFromUser(FieldConstants.UserRegistrationField.AddressSecondLine, "Please enter your second line of your address"); 
-            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.AddressCity] = GetInputFromUser(FieldConstants.UserRegistrationField.AddressCity, "Please enter the city where you live");
-            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.PostCode] = GetInputFromUser(FieldConstants.UserRegistrationField.PostCode, "Please enter the post code of your city");
+            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.EMailAddress] = GetInputFromUser(FieldConstants.UserRegistrationField.EMailAddress, "Please enter you email address: ");
+            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.FirstName] = GetInputFromUser(FieldConstants.UserRegistrationField.FirstName, "Please enter you first name: ");
+            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.LastName] = GetInputFromUser(FieldConstants.UserRegistrationField.LastName, "Please enter you last name: ");
+            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.Passwort] = GetInputFromUser(FieldConstants.UserRegistrationField.Passwort, $"Please enter you password.{Environment.NewLine}You password must contain at leas 1 small-case letter,{Environment.NewLine}1 Captital letter, 1 digit, 1 special character{Environment.NewLine} and the length should be between 6-10 characters: ");
+            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.PasswortCompare] = GetInputFromUser(FieldConstants.UserRegistrationField.PasswortCompare, "Please re-enter you password: ");
+            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.DateOfBirth] = GetInputFromUser(FieldConstants.UserRegistrationField.DateOfBirth, "Please enter you day of birth: ");
+            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.AddressFirstLine] = GetInputFromUser(FieldConstants.UserRegistrationField.AddressFirstLine, "Please enter your first line of your address: ");
+            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.AddressSecondLine] = GetInputFromUser(FieldConstants.UserRegistrationField.AddressSecondLine, "Please enter your second line of your address: "); 
+            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.AddressCity] = GetInputFromUser(FieldConstants.UserRegistrationField.AddressCity, "Please enter the city where you live: ");
+            _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.PostCode] = GetInputFromUser(FieldConstants.UserRegistrationField.PostCode, "Please enter the post code of your city: ");
 
             RegisterUser();
         }
@@ -55,7 +55,7 @@ namespace ClubMembershipApplication.Views
 
             do
             {
-                Console.WriteLine(promptText);
+                Console.Write(promptText);
                 fieldVal = Console.ReadLine();
 
             } while (!FieldValid(field, fieldVal));
