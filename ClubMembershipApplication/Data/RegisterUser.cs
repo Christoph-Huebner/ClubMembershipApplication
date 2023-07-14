@@ -1,8 +1,10 @@
-﻿using System;
+﻿using ClubMembershipApplication.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClubMembershipApplication.FieldValidators;
 
 namespace ClubMembershipApplication.Data
 {
@@ -15,7 +17,25 @@ namespace ClubMembershipApplication.Data
 
         public bool Register(string[] fields)
         {
-            throw new NotImplementedException();
+            using (var dbContext = new ClubMembershipDbContext())
+            {
+                User user = new User
+                {
+                    EMailAdress = fields[(int)FieldConstants.UserRegistrationField.EMailAddress],
+                    FirstName = fields[(int)FieldConstants.UserRegistrationField.FirstName],
+                    LastName = fields[(int)FieldConstants.UserRegistrationField.LastName],
+                    Password = fields[(int)FieldConstants.UserRegistrationField.Passwort],
+                    DateOfBirth = DateTime.Parse(fields[(int)FieldConstants.UserRegistrationField.DateOfBirth]),
+                    PhoneNumber = fields[(int)FieldConstants.UserRegistrationField.PhoneNumber],
+                    AddressFirstLine = fields[(int)FieldConstants.UserRegistrationField.AddressFirstLine],
+                    AddressSecondLine = fields[(int)FieldConstants.UserRegistrationField.AddressSecondLine],
+                    AddressCity = fields[(int)FieldConstants.UserRegistrationField.AddressCity],
+                    PostCode = fields[(int)FieldConstants.UserRegistrationField.PostCode]
+                };
+                dbContext.User.Add(user);
+                dbContext.SaveChanges();
+            }
+            return true;
         }
     }
 }
