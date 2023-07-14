@@ -22,6 +22,7 @@ namespace ClubMembershipApplication.Views
 
         public void RunView()
         {
+            CommonOutputText.WriteMainHeading();
             CommonOutputText.WriteRegistrationHeading();
 
             _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.EMailAddress] = GetInputFromUser(FieldConstants.UserRegistrationField.EMailAddress, "Please enter you email address");
