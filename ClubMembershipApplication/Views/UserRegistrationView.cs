@@ -65,7 +65,7 @@ namespace ClubMembershipApplication.Views
 
         private bool FieldValid(FieldConstants.UserRegistrationField field, string fieldValue) 
         {
-            if (_fieldValidator.ValidatorDel((int)field, fieldValue, _fieldValidator.FieldArray, out string invalidMessage))
+            if (!_fieldValidator.ValidatorDel((int)field, fieldValue, _fieldValidator.FieldArray, out string invalidMessage))
             {
                 CommonOutputFormat.ChangeFontColor(FontTheme.Danger);
                 Console.WriteLine(invalidMessage);
