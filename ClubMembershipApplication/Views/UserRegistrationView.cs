@@ -23,6 +23,7 @@ namespace ClubMembershipApplication.Views
         public void RunView()
         {
             CommonOutputText.WriteRegistrationHeading();
+
             _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.EMailAddress] = GetInputFromUser(FieldConstants.UserRegistrationField.EMailAddress, "Please enter you email address");
             _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.FirstName] = GetInputFromUser(FieldConstants.UserRegistrationField.FirstName, "Please enter you first name");
             _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.LastName] = GetInputFromUser(FieldConstants.UserRegistrationField.LastName, "Please enter you last name");
@@ -33,6 +34,18 @@ namespace ClubMembershipApplication.Views
             _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.AddressSecondLine] = GetInputFromUser(FieldConstants.UserRegistrationField.AddressSecondLine, "Please enter your second line of your address"); 
             _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.AddressCity] = GetInputFromUser(FieldConstants.UserRegistrationField.AddressCity, "Please enter the city where you live");
             _fieldValidator.FieldArray[(int)FieldConstants.UserRegistrationField.PostCode] = GetInputFromUser(FieldConstants.UserRegistrationField.PostCode, "Please enter the post code of your city");
+
+            RegisterUser();
+        }
+
+        private void RegisterUser()
+        {
+            _register.Register(_fieldValidator.FieldArray);
+
+            CommonOutputFormat.ChangeFontColor(FontTheme.Success);
+            Console.WriteLine("You have successfully registered. Please press any key to login");
+            CommonOutputFormat.ChangeFontColor(FontTheme.Default);
+            Console.ReadKey();
         }
 
         private string GetInputFromUser(FieldConstants.UserRegistrationField field, string promptText)
