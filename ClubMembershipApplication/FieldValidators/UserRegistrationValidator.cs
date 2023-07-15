@@ -25,7 +25,7 @@ namespace ClubMembershipApplication.FieldValidators
         CompareFieldsValidDel? _compareFieldsValidDel = null;
 
         string[]? _fieldArray = null;
-        IRegister? _register = null;
+        readonly IRegister? _register = null;
 
         public string[] FieldArray
         {

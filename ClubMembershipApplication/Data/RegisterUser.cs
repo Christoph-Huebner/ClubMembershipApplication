@@ -23,7 +23,7 @@ namespace ClubMembershipApplication.Data
 
         public bool Register(string[] fields)
         {
-            using (var dbContext = new ClubMembershipDbContext())
+            using var dbContext = new ClubMembershipDbContext();
             {
                 User user = new User
                 {
