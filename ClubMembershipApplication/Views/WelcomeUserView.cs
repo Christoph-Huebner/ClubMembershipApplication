@@ -10,7 +10,7 @@ namespace ClubMembershipApplication.Views
 {
     public class WelcomeUserView : IView
     {
-        User _user = null;
+        User? _user = null;
 
         public WelcomeUserView(User user)
         {
@@ -24,7 +24,7 @@ namespace ClubMembershipApplication.Views
             Console.Clear();
             CommonOutputText.WriteMainHeading();
             CommonOutputFormat.ChangeFontColor(FontTheme.Success);
-            Console.WriteLine($"Hi {_user.FirstName}!!{Environment.NewLine}Welcome to the Cycling club!!");
+            Console.WriteLine($"Hi {((_user != null) ? _user.FirstName : "unknown user")}!!{Environment.NewLine}Welcome to the Cycling club!!");
             CommonOutputFormat.ChangeFontColor(FontTheme.Default);
             Console.ReadKey(); 
         }

@@ -11,8 +11,8 @@ namespace ClubMembershipApplication.Views
     {
         public IFieldValidator FieldValidator => null;
 
-        IView _registerView = null;
-        IView _loginView = null;
+        IView? _registerView = null;
+        IView? _loginView = null;
 
         public MainView(IView registerView, IView loginView) 
         { 
@@ -45,12 +45,14 @@ namespace ClubMembershipApplication.Views
 
         private void RunUserRegisterationView()
         {
-            _registerView.RunView();
+            if(_registerView != null) 
+                _registerView.RunView();
         }
 
         private void RunLoginView()
         {
-            _loginView.RunView();
+            if(_loginView != null)
+                _loginView.RunView();
         }
     }
 }
