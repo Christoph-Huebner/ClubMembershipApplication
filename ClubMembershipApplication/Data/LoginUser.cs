@@ -11,7 +11,7 @@ namespace ClubMembershipApplication.Data
     {
         public User Login(string eMailAddress, string password)
         {
-            User user = null;
+            User? user = null;
             using (var dbContext = new ClubMembershipDbContext())
             {
                 user = dbContext.User.FirstOrDefault(u => u.EMailAdress.Trim().ToLower() == eMailAddress.Trim().ToLower() && u.Password.Equals(password));
