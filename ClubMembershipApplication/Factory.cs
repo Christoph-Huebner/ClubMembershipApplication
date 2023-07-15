@@ -15,10 +15,10 @@ namespace ClubMembershipApplication
         {
             ILogin login = new LoginUser();
             IRegister register = new RegisterUser();
-            IFieldValidator userRegistrationValidato = new UserRegistrationValidator(register);
-            userRegistrationValidato.InitialiseValidatorDelegates();
+            IFieldValidator userRegistrationValidator = new UserRegistrationValidator(register);
+            userRegistrationValidator.InitialiseValidatorDelegates();
 
-            IView registerView = new UserRegistrationView(register, userRegistrationValidato);
+            IView registerView = new UserRegistrationView(register, userRegistrationValidator);
             IView loginView = new UserLoginView(login);
             IView mainView = new MainView(registerView, loginView);
 

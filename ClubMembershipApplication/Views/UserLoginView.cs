@@ -11,7 +11,7 @@ namespace ClubMembershipApplication.Views
 {
     public class UserLoginView : IView
     {
-        ILogin _login = null;
+        ILogin? _login = null;
         public IFieldValidator FieldValidator => null;
 
         public UserLoginView(ILogin login)
@@ -29,7 +29,8 @@ namespace ClubMembershipApplication.Views
             Console.WriteLine("Please enter you password");
             string? password = Console.ReadLine();
 
-            User user = _login.Login(emailAddress, password);
+            User? user = (_login != null) ? _login.Login(((emailAddress != null) ? emailAddress : "") , ((password != null) ? (password) : "")) : null;
+
             if (user != null)
             {
                 WelcomeUserView welcomeUserView = new WelcomeUserView(user);

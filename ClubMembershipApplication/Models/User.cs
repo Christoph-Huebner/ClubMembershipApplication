@@ -18,8 +18,8 @@ namespace ClubMembershipApplication.Models
         public DateTime DateOfBirth { get; set; }
         public string PhoneNumber { get; set; } = string.Empty;
         public string AddressFirstLine { get; set; } = string.Empty;
-        public string AddressSecondLine { get; set;} = string.Empty;
-        public string AddressCity { get; set;} = string.Empty;
-        public string PostCode { get; set;} = string.Empty;
+        public string AddressSecondLine { get; set; } = string.Empty;
+        public string AddressCity { get; set; } = string.Empty;
+        public string PostCode { get; set; } = string.Empty;
     }
 }
