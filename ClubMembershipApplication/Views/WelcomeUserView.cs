@@ -10,7 +10,7 @@ namespace ClubMembershipApplication.Views
 {
     public class WelcomeUserView : IView
     {
-        User? _user = null;
+        readonly User? _user = null;
 
         public WelcomeUserView(User user)
         {

@@ -10,8 +10,8 @@ namespace ClubMembershipApplication.Views
 {
     public class UserRegistrationView : IView
     {
-        IFieldValidator? _fieldValidator = null;
-        IRegister? _register = null;
+        readonly IFieldValidator? _fieldValidator = null;
+        readonly IRegister? _register = null;
 
         public IFieldValidator FieldValidator { get => _fieldValidator; }
         public UserRegistrationView(IRegister register, IFieldValidator fieldValidator)
@@ -70,16 +70,16 @@ namespace ClubMembershipApplication.Views
 
         private string GetInputFromUser(FieldConstants.UserRegistrationField field, string promptText)
         {
-            string? fieldVal = "";
+            string? fieldVal;
 
             do
             {
                 Console.Write(promptText);
                 fieldVal = Console.ReadLine();
 
-            } while (!FieldValid(field, ((fieldVal != null) ? fieldVal : "")));
+            } while (!FieldValid(field, fieldVal ?? ""));
 
-            return ((fieldVal != null) ? fieldVal : "");
+            return (fieldVal ?? "");
         }
 
         private bool FieldValid(FieldConstants.UserRegistrationField field, string fieldValue) 

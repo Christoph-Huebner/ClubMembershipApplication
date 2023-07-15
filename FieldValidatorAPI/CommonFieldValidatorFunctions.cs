@@ -101,7 +101,7 @@ namespace FieldValidatorAPI
 
         private static bool FieldPatternValid (string fieldVal, string regularExpressionPattern)
         {
-            Regex regex = new Regex(regularExpressionPattern);
+            Regex regex = new (regularExpressionPattern);
             if (regex.IsMatch(fieldVal))
                 return true;
 
